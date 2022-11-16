@@ -223,25 +223,28 @@ def getStateDevices(message):
 def getSensorDevices(message):
     states = []
 
+def getSensorDeviceState(states, sens, type, value):
     typeDb = {
-        'Temperature':   {'Name': 'Temperatur',      'Unit': '°C',   'DomoType': 'Temperature'},
-        'Humidity':      {'Name': 'Feuchtigkeit',    'Unit': '%',    'DomoType': 'Humidity'},
-        'Pressure':      {'Name': 'Luftdruck',       'Unit': 'hPa',  'DomoType': 'Barometer'},
-        'Illuminance':   {'Name': 'Helligkeit',      'Unit': 'lux',  'DomoType': 'Illumination'},
-        'Distance':      {'Name': 'Abstand',         'Unit': 'mm ',  'DomoType': 'Distance'},
-        'UvLevel':       {'Name': 'UV Level',        'Unit': 'raw',  'DomoType': 'Custom'},
-        'UvIndex':       {'Name': 'UV Index',        'Unit': 'UVI',  'DomoType': 'Custom'},
-        'UvPower':       {'Name': 'UV Leistung',     'Unit': 'W/m²', 'DomoType': 'Custom'},
-        'Total':         {'Name': 'Gesamt',          'Unit': 'kWh',  'DomoType': 'Custom'},
-        'Yesterday':     {'Name': 'Gestern',         'Unit': 'kWh',  'DomoType': 'Custom'},
-        'Today':         {'Name': 'Heute',           'Unit': 'kWh',  'DomoType': 'Custom'},
-        'Power':         {'Name': 'Leistung',        'Unit': 'kW',   'DomoType': 'Usage'},
-        'ApparentPower': {'Name': 'Scheinleistung',  'Unit': 'kW',   'DomoType': 'Usage'},
-        'ReactivePower': {'Name': 'Blindleistung',   'Unit': 'kW',   'DomoType': 'Usage'},
-        'Factor':        {'Name': 'Leistungsfaktor', 'Unit': 'W/VA', 'DomoType': 'Custom'},
-        'Frequency':     {'Name': 'Frequenz',        'Unit': 'Hz',   'DomoType': 'Custom'},
-        'Voltage':       {'Name': 'Spannung',        'Unit': 'V',    'DomoType': 'Voltage'},
-        'Current':       {'Name': 'Strom',           'Unit': 'A',    'DomoType': 'Current (Single)'}
+    'Temperature':   {'Name': 'Temperature',   'Unit': '°C',   'DomoType': 'Temperature'},
+    'Humidity':      {'Name': 'Humidity',      'Unit': '%',    'DomoType': 'Humidity'},
+    'Pressure':      {'Name': 'Pressure',      'Unit': 'hPa',  'DomoType': 'Barometer'},
+    'Illuminance':   {'Name': 'Illuminance',   'Unit': 'lux',  'DomoType': 'Illumination'},
+    'Distance':      {'Name': 'Distance',      'Unit': 'mm ',  'DomoType': 'Distance'},
+    'UvLevel':       {'Name': 'UV Level',      'Unit': 'raw',  'DomoType': 'Custom'},
+    'UvIndex':       {'Name': 'UV Index',      'Unit': 'UVI',  'DomoType': 'Custom'},
+    'UvPower':       {'Name': 'UV Power',      'Unit': 'W/m²', 'DomoType': 'Custom'},
+    'Total':         {'Name': 'Total',         'Unit': 'kWh',  'DomoType': 'Custom'},
+    'Yesterday':     {'Name': 'Yesterday',     'Unit': 'kWh',  'DomoType': 'Custom'},
+    'Today':         {'Name': 'Today',         'Unit': 'kWh',  'DomoType': 'Custom'},
+    'Power':         {'Name': 'Power',         'Unit': 'kW',   'DomoType': 'Usage'},
+    'ApparentPower': {'Name': 'ApparentPower', 'Unit': 'kW',   'DomoType': 'Usage'},
+    'ReactivePower': {'Name': 'ReactivePower', 'Unit': 'kW',   'DomoType': 'Usage'},
+    'Factor':        {'Name': 'Factor',        'Unit': 'W/VA', 'DomoType': 'Custom'},
+    'Frequency':     {'Name': 'Frequency',     'Unit': 'Hz',   'DomoType': 'Custom'},
+    'Voltage':       {'Name': 'Voltage',       'Unit': 'V',    'DomoType': 'Voltage'},
+    'Current':       {'Name': 'Current',       'Unit': 'A',    'DomoType': 'Current (Single)'},
+    'Range':         {'Name': 'Pressure',      'Unit': 'Bar',  'DomoType': 'Pressure'},
+    'A':             {'Name': 'Pressure',      'Unit': 'Bar',  'DomoType': 'Pressure'}
     }
 
     if isinstance(message, collections.Mapping):
