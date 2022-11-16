@@ -241,6 +241,7 @@ def getSensorDevices(message):
 		'Factor':        {'Name': 'Factor',        'Unit': 'W/VA', 'DomoType': 'Custom'},
 		'Frequency':     {'Name': 'Frequency',     'Unit': 'Hz',   'DomoType': 'Custom'},
 		'Voltage':       {'Name': 'Voltage',       'Unit': 'V',    'DomoType': 'Voltage'},
+		'Current':       {'Name': 'Current',       'Unit': 'A',    'DomoType': 'Current (Single)'}
     }
 
     if isinstance(message, collections.Mapping):
